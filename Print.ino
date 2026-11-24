@@ -525,7 +525,7 @@ void Print()
             lcd.setCursor(0, 0);
              lcd.print("                    ");
              lcd.setCursor(0, 1);     
-             lcd.print("  Mode not available! ");
+             lcd.print(" Mode unavailable!  ");
              lcd.setCursor(0, 2);
              lcd.print("                    ");
              lcd.setCursor(0, 3);
@@ -668,7 +668,7 @@ void Print()
              lcd.setCursor(0, 0);
              lcd.print("                    ");
              lcd.setCursor(0, 1);     
-             lcd.print("  Mode not available! ");
+             lcd.print(" Mode unavailable!  ");
              lcd.setCursor(0, 2);
              lcd.print("                    ");
              lcd.setCursor(0, 3);
@@ -681,7 +681,7 @@ void Print()
                        
 
                            lcd.setCursor(0, 0);
-                           lcd.print("   Current angle     ");
+                           lcd.print("   Current angle    ");
                            lcd.setCursor(0, 1);
                            lcd.print("       ");
                            snprintf(LCD_Row_2, 9, "%3ld.%01ld", Spindle_Angle/1000, Spindle_Angle%1000/100);
