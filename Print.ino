@@ -88,7 +88,7 @@ void Print()
          lcd.print(" Diameter   -"); 
          snprintf(LCD_Row_7, 7, "%3ld.%02d", abs(MSize_X_mm/100), abs(MSize_X_mm%100));
          lcd.print(LCD_Row_7);
-         lcd.print("мм");  
+         lcd.print("mm");  
      }
      ////////////////////////дистанционные лимиты/////////////////////////////////
      if ((Mode == Mode_Feed      && SelectMenu == 4) || 
@@ -224,7 +224,7 @@ void Print()
              lcd.print(" Travel:"); 
              snprintf(LCD_Row_3, 5, "%1d.%02d", Thstep_mm/100, Thstep_mm%100);
              lcd.print(LCD_Row_3);
-             lcd.print("мм");  
+             lcd.print("mm");  
             }
             else 
             { 
@@ -249,7 +249,7 @@ void Print()
              lcd.print("Thread travel:   "); 
              snprintf(LCD_Row_5, 5, "%1d.%02d", Thstep_mm/100, Thstep_mm%100);
              lcd.print(LCD_Row_5);
-             lcd.print("мм"); 
+             lcd.print("mm"); 
              lcd.setCursor(0, 3);
              lcd.print("Thread pitch:   ");        
              snprintf(LCD_Row_6, 7, "%s", Thread_Info[Thread_Step].Thread_Print);  
@@ -419,7 +419,7 @@ void Print()
       {
         case Sub_Mode_Cone_Int:
              lcd.setCursor(0, 0);      
-             lcd.print("  Внутр ");
+             lcd.print("Internal");
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_3, 3, "%2d", Pass_Total-Pass_Nr+1);
              lcd.print(LCD_Row_3);         
@@ -586,7 +586,7 @@ void Print()
          lcd.print("BALL \6");
          snprintf(LCD_Row_1, 5, "%2ld.%01ld", Sph_R_mm * 2 / 100, Sph_R_mm * 2 / 10 %10);
          lcd.print(LCD_Row_1);
-         lcd.print("мм");
+         lcd.print("mm");
          lcd.setCursor(8, 1);      
          lcd.print(" Feed:");
          snprintf(LCD_Row_2, 5, "%1d.%02d", Feed_mm/100, Feed_mm%100);
@@ -652,12 +652,12 @@ void Print()
          lcd.print("Cutter width: ");
          snprintf(LCD_Row_1, 5, "%1d.%02d", Cutter_Width/100, Cutter_Width%100);
          lcd.print(LCD_Row_1);
-         lcd.print("мм");
+         lcd.print("mm");
          lcd.setCursor(0, 1);
          lcd.print("Step along Z: ");
          snprintf(LCD_Row_2, 5, "%1d.%02d", Cutting_Width/100, Cutting_Width%100);
          lcd.print(LCD_Row_2);
-         lcd.print("мм"); 
+         lcd.print("mm"); 
          lcd.setCursor(0, 2);
          lcd.print("                    ");
          lcd.setCursor(0, 3);
