@@ -9,24 +9,24 @@ void Print()
      if      (err_0_flag == true)
    {
       lcd.setCursor(0, 0);
-      lcd.print("      BHИMAHИE      ");
+      lcd.print("      WARNING       ");
       lcd.setCursor(0, 1);
-      lcd.print("Установите джойстик ");
+      lcd.print("Set joystick to     ");
       lcd.setCursor(0, 2);
-      lcd.print("   в нейтральное    "); 
+      lcd.print("   neutral position "); 
       lcd.setCursor(0, 3);
-      lcd.print("     положение      ");
+      lcd.print("                    ");
       return;   
    } 
   
    if      (err_1_flag == true)
    {
       lcd.setCursor(0, 0);
-      lcd.print(" BHИMAHИE:          ");
+      lcd.print(" WARNING:           ");
       lcd.setCursor(0, 1);
       lcd.print("                    ");
       lcd.setCursor(0, 2);
-      lcd.print("   УСТАНОВИТЕ УПОРЫ!"); 
+      lcd.print("   SET THE STOPS!   "); 
       lcd.setCursor(0, 3);
       lcd.print("                    ");
       return;   
@@ -34,13 +34,13 @@ void Print()
    else if (err_2_flag == true)
    {
       lcd.setCursor(0, 0);
-      lcd.print(" BHИMAHИE:          ");
+      lcd.print(" WARNING:           ");
       lcd.setCursor(0, 1);     
       lcd.print("                    ");
       lcd.setCursor(0, 2);
-      lcd.print("УСТАНОВИТЕ СУППОРТ  ");
+      lcd.print("SET CARRIAGE TO HOME");
       lcd.setCursor(0, 3);
-      lcd.print(" В ИСХОДНУЮ ПОЗИЦИЮ!");      
+      lcd.print("    POSITION!       ");      
       return;   
    }
    else if (Complete_flag == true)
@@ -48,7 +48,7 @@ void Print()
       lcd.setCursor(0, 0);
       lcd.print("                    ");
       lcd.setCursor(0, 1);     
-      lcd.print("OПEPAЦИЯ 3ABEPШEHA! ");
+      lcd.print("OPERATION COMPLETE! ");
       lcd.setCursor(0, 2);
       lcd.print("                    ");
       lcd.setCursor(0, 3);
@@ -58,13 +58,13 @@ void Print()
    else if (isPausedAfterStep == true)
    {
       lcd.setCursor(0, 0);
-      lcd.print("       ПАУЗА        ");
+      lcd.print("        PAUSE       ");
       lcd.setCursor(0, 1);     
-      lcd.print("  для продолжения   ");
+      lcd.print("  Press UP to resume");
       lcd.setCursor(0, 2);
-      lcd.print("  нажмите верхнюю   ");
+      lcd.print("  Press the upper   ");
       lcd.setCursor(0, 3);
-      lcd.print("   кнопку меню \3    ");       
+      lcd.print("   MENU button \3    ");       
       return;   
    }   
      
@@ -76,16 +76,16 @@ void Print()
          (Mode == Mode_Thread  && SelectMenu == 3))
    {
          lcd.setCursor(0, 0);
-         lcd.print("   Ввод диаметра    ");
+         lcd.print(" Enter workpiece dia.");
          lcd.setCursor(0, 1);
-         lcd.print("    заготовки       ");
+         lcd.print("                    ");
          lcd.setCursor(0, 2);
          lcd.print("\3\4                  ");
          lcd.setCursor(0, 3);
          if (MSize_X_mm <= 0)
-         lcd.print(" Диаметр    ");
+         lcd.print(" Diameter    ");
          else 
-         lcd.print(" Диаметр   -"); 
+         lcd.print(" Diameter   -"); 
          snprintf(LCD_Row_7, 7, "%3ld.%02d", abs(MSize_X_mm/100), abs(MSize_X_mm%100));
          lcd.print(LCD_Row_7);
          lcd.print("мм");  
@@ -98,13 +98,13 @@ void Print()
          (Mode == Mode_Thread    && SelectMenu == 4))
         {
          lcd.setCursor(0, 0);
-          lcd.print("ДИСТАНЦИОННЫЕ ЛИМИТЫ");
+          lcd.print("REMOTE LIMITS        ");
           lcd.setCursor(0, 1);
           lcd.print("                    ");
           lcd.setCursor(0, 2); 
-          lcd.print("Расстояние          "); 
+          lcd.print("Distance             "); 
           lcd.setCursor(0, 3);
-          lcd.print("до лимита: ");
+          lcd.print("to limit: ");
           snprintf(LCD_Row_8, sizeof(LCD_Row_8), "%3ld.%03d", (Distance_mm/2)/1000, (Distance_mm/2)%1000);  
           lcd.print(LCD_Row_8);
           lcd.setCursor(18, 3);
@@ -158,7 +158,7 @@ void Print()
          if ((Ph > 1) && (ConL_Thr_flag == false || ConR_Thr_flag == false))
             {
             lcd.setCursor(8, 0);
-            lcd.print("\2  Pезьба");
+            lcd.print("\2  Thread");
             snprintf(LCD_Row_1, 18, " %2d", Gewinde_flag);
             lcd.print(LCD_Row_1);
              }
@@ -167,52 +167,52 @@ void Print()
             lcd.setCursor(8, 0);
             snprintf(LCD_Row_1, 8, "<%s ", Cone_Info[Cone_Step].Cone_Print);
             lcd.print(LCD_Row_1);
-            lcd.print("Pезьба");
+            lcd.print("Thread");
              }
       else if (ConR_Thr_flag == true && Ph == 1)
             {
            lcd.setCursor(8, 0);
             snprintf(LCD_Row_1, 8, ">%s ", Cone_Info[Cone_Step].Cone_Print);
             lcd.print(LCD_Row_1);
-            lcd.print("Pезьба");  
+            lcd.print("Thread");  
             }
             else 
              {
             lcd.setCursor(8, 0);
-            lcd.print("\2  Pезьба   ");
+            lcd.print("\2  Thread   ");
              }
            
             lcd.setCursor(8, 2);
-            lcd.print(" Циклов:  ");                                             
+            lcd.print(" Cycles:   ");                                             
             lcd.setCursor(8, 1);
-            lcd.print(" Шаг: ");        
+            lcd.print(" Pitch: ");        
             snprintf(LCD_Row_2, 7, "%s", Thread_Info[Thread_Step].Thread_Print);  
             lcd.print(LCD_Row_2);
      
       if (Sub_Mode_Thread == Sub_Mode_Thread_Int)
             {lcd.setCursor(0, 0);
-             if (Kzr == 1)  {lcd.print("1Внутр ");}
-             else if (Kzr == 2)  {lcd.print("2Внутр  ");}
-             else if (Kzr == 3)  {lcd.print("3Внутр  ");} 
-             else if (Kzr == 4)  {lcd.print("4Внутр  ");}
+             if (Kzr == 1)  {lcd.print("1Int.   ");}
+             else if (Kzr == 2)  {lcd.print("2Int.    ");}
+             else if (Kzr == 3)  {lcd.print("3Int.    ");} 
+             else if (Kzr == 4)  {lcd.print("4Int.    ");}
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_4, 3, "%2d", (Thread_Info[Thread_Step].Pass - Pass_Nr+1 + PASS_FINISH + Pass_Fin) + Thr_Pass_Summ );
              lcd.print(LCD_Row_4);}
       else if (Sub_Mode_Thread == Sub_Mode_Thread_Man)
              {lcd.setCursor(0, 0);
-             if (Kzr == 1)  {lcd.print("1Pyчная ");}
-             else if (Kzr == 2)  {lcd.print("2Pyчная ");}
-             else if (Kzr == 3)  {lcd.print("3Pyчная ");}
-             else if (Kzr == 4)  {lcd.print("4Pyчная ");}
+             if (Kzr == 1)  {lcd.print("1Manual ");}
+             else if (Kzr == 2)  {lcd.print("2Manual ");}
+             else if (Kzr == 3)  {lcd.print("3Manual ");}
+             else if (Kzr == 4)  {lcd.print("4Manual ");}
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_4, 3, "%2d", (Thread_Info[Thread_Step].Pass + PASS_FINISH + Pass_Fin) + Thr_Pass_Summ );
              lcd.print(LCD_Row_4);} 
       else if (Sub_Mode_Thread ==  Sub_Mode_Thread_Ext)
              {lcd.setCursor(0, 0);
-             if (Kzr == 1)  {lcd.print("1Наружн ");}
-             else if (Kzr == 2)  {lcd.print("2Наружн ");}
-             else if (Kzr == 3)  {lcd.print("3Наружн ");}
-             else if (Kzr == 4)  {lcd.print("4Наружн ");}
+             if (Kzr == 1)  {lcd.print("1External");}
+             else if (Kzr == 2)  {lcd.print("2External");}
+             else if (Kzr == 3)  {lcd.print("3External");}
+             else if (Kzr == 4)  {lcd.print("4External");}
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_4, 3, "%2d", (Thread_Info[Thread_Step].Pass - Pass_Nr+1 + PASS_FINISH + Pass_Fin) + Thr_Pass_Summ );
              lcd.print(LCD_Row_4);}
@@ -221,7 +221,7 @@ void Print()
             {
              int Thstep_mm = Thread_Info[Thread_Step].Step * 100 * Ph;  
              lcd.setCursor(8, 3); 
-             lcd.print(" Ход: "); 
+             lcd.print(" Travel:"); 
              snprintf(LCD_Row_3, 5, "%1d.%02d", Thstep_mm/100, Thstep_mm%100);
              lcd.print(LCD_Row_3);
              lcd.print("мм");  
@@ -229,7 +229,7 @@ void Print()
             else 
             { 
              lcd.setCursor(8, 3);
-             lcd.print(" Об/мин: "); 
+             lcd.print(" RPM: "); 
              snprintf(LCD_Row_3, 4, "%3d", Thread_Info[Thread_Step].Limit_Print); 
              lcd.print(LCD_Row_3);
             }
@@ -238,20 +238,20 @@ void Print()
          {
              int Thstep_mm = Thread_Info[Thread_Step].Step * 100 * Ph;  
              lcd.setCursor(0, 0);                            
-             lcd.print("Чист проходов: \1\2 "); 
+             lcd.print("Finish passes: \1\2 "); 
              snprintf(LCD_Row_3, 3, "%2d", PASS_FINISH + Pass_Fin);
              lcd.print(LCD_Row_3);
              lcd.setCursor(0, 1);
-             lcd.print("Колич заходов: \3\4 ");
+             lcd.print("Thread starts: \3\4 ");
              snprintf(LCD_Row_4, 3, "%2d", Ph);
              lcd.print(LCD_Row_4);
              lcd.setCursor(0, 2); 
-             lcd.print("Ход резьбы:   "); 
+             lcd.print("Thread travel:   "); 
              snprintf(LCD_Row_5, 5, "%1d.%02d", Thstep_mm/100, Thstep_mm%100);
              lcd.print(LCD_Row_5);
              lcd.print("мм"); 
              lcd.setCursor(0, 3);
-             lcd.print("Шаг резьбы:   ");        
+             lcd.print("Thread pitch:   ");        
              snprintf(LCD_Row_6, 7, "%s", Thread_Info[Thread_Step].Thread_Print);  
              lcd.print(LCD_Row_6);
     
@@ -267,19 +267,19 @@ void Print()
        if  (OTSKOK_Z < REBOUND_Z || TENSION_Z > 1)  
            {
             lcd.setCursor(8, 0);
-            lcd.print("\2  Синхрон *");}
+            lcd.print("\2  Sync feed *");}
             else{
             lcd.setCursor(8, 0);
-            lcd.print("\2  Синхрон  ");          
+            lcd.print("\2  Sync feed  ");          
             }
             lcd.setCursor(8, 1);      
-            lcd.print(" Подача:");
+            lcd.print(" Feed:");
             snprintf(LCD_Row_2, 5, "%1d.%02d", Feed_mm/100, Feed_mm%100);
             lcd.print(LCD_Row_2);
             lcd.setCursor(8, 2);
-            lcd.print(" Циклов:  ");
+            lcd.print(" Cycles:   ");
             lcd.setCursor(8, 3); 
-            lcd.print(" Съём \6:");
+            lcd.print(" Depth \6:");
             snprintf(LCD_Row_4, 5, "%1d.%02d", Ap/100, Ap%100);
             lcd.print(LCD_Row_4); 
                   
@@ -287,21 +287,21 @@ void Print()
       {
         case Sub_Mode_Feed_Int:
              lcd.setCursor(0, 0);      
-             lcd.print(" Внутр  ");
+             lcd.print(" Internal");
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_3, 3, "%2d", Pass_Total-Pass_Nr+1);
              lcd.print(LCD_Row_3);     
              break;
         case Sub_Mode_Feed_Man:             
              lcd.setCursor(0, 0);      
-             lcd.print(" Ручной ");
+             lcd.print(" Manual  ");
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_3, 3, "%2d", Pass_Total);
              lcd.print(LCD_Row_3);            
              break;
         case Sub_Mode_Feed_Ext:
              lcd.setCursor(0, 0);      
-             lcd.print(" Наружн ");
+             lcd.print(" External");
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_3, 3, "%2d", Pass_Total-Pass_Nr+1);
              lcd.print(LCD_Row_3);           
@@ -310,15 +310,15 @@ void Print()
          }
               else if (SelectMenu == 2){
               lcd.setCursor(0, 0);
-              lcd.print("Отскок Z: \1\2");
+              lcd.print("Rebound Z: \1\2");
               snprintf(LCD_Row_5, 16, " %2ld.%02dmm", abs(OTSKOK_Z_mm/100), abs(OTSKOK_Z_mm%100));
               lcd.print(LCD_Row_5);  
               lcd.setCursor(0, 1);
               lcd.print("                    ");
               lcd.setCursor(0, 2);
-              lcd.print("Ослабление \3        ");
+              lcd.print("Release tension \3 ");
               lcd.setCursor(0, 3);
-              lcd.print("натяга Z:  \4"); 
+              lcd.print("Tension Z:  \4"); 
               snprintf(LCD_Row_6, 16, " %2ld.%02dmm", abs(TENSION_Z_mm/100), abs(TENSION_Z_mm%100));
               lcd.print(LCD_Row_6);
      }
@@ -331,15 +331,15 @@ void Print()
           if (SelectMenu == 1) 
            {
             lcd.setCursor(8, 0);
-            lcd.print("\2  Асинхрон ");
+            lcd.print("\2  Async feed");
             lcd.setCursor(8, 1);      
-            lcd.print(" Подача: ");
+            lcd.print(" Feed: ");
             snprintf(LCD_Row_1, 4, "%3d", aFeed_mm);
             lcd.print(LCD_Row_1);
             lcd.setCursor(8, 2);
-            lcd.print(" Циклов:  ");
+            lcd.print(" Cycles:   ");
             lcd.setCursor(8, 3); 
-            lcd.print(" Съём R:");
+            lcd.print("Depth R:");
             snprintf(LCD_Row_4, 5, "%1d.%02d", Ap/100, Ap%100);
             lcd.print(LCD_Row_4);
 
@@ -347,21 +347,21 @@ void Print()
       {
         case Sub_Mode_aFeed_Int:
              lcd.setCursor(0, 0);      
-             lcd.print(" Внутр  ");
+             lcd.print(" Internal");
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_3, 3, "%2d", Pass_Total-Pass_Nr+1);
              lcd.print(LCD_Row_3);            
              break;
         case Sub_Mode_aFeed_Man:
              lcd.setCursor(0, 0);      
-             lcd.print(" Ручной ");
+             lcd.print(" Manual  ");
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_3, 3, "%2d", Pass_Total);
              lcd.print(LCD_Row_3);           
              break;
         case Sub_Mode_aFeed_Ext:
              lcd.setCursor(0, 0);      
-             lcd.print(" Наружн ");
+             lcd.print(" External");
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_3, 3, "%2d", Pass_Total-Pass_Nr+1);
              lcd.print(LCD_Row_3);               
@@ -371,22 +371,22 @@ void Print()
         else if (SelectMenu == 2)
             {
              lcd.setCursor(0, 0);
-             lcd.print("Текущий  угол:");
+             lcd.print("Current angle:");
              snprintf(LCD_Row_2, 7, "%3ld.%01ld", Spindle_Angle/1000, Spindle_Angle%1000/100);
              lcd.print(LCD_Row_2);
              lcd.print("\5");                           
              lcd.setCursor(0, 1);
-             lcd.print("Делим круг на:");
+             lcd.print("Divide circle by:");
              snprintf(LCD_Row_1, 5,"%3d " , Total_Tooth);
              lcd.print(LCD_Row_1);
              lcd.print("\3\4");                           
              lcd.setCursor(0, 2);
-             lcd.print("Выбор отметки:");
+             lcd.print("Select mark:");
              snprintf(LCD_Row_3, 5, "%3d ", Current_Tooth);
              lcd.print(LCD_Row_3);
              lcd.print("\1\2");
              lcd.setCursor(0, 3);
-             lcd.print("Угол  сектора:");
+             lcd.print("Sector angle:");
              snprintf(LCD_Row_4, 7, "%3ld.%01ld", Required_Angle/1000, Required_Angle%1000/100);
              lcd.print(LCD_Row_4);
              lcd.print("\5");
@@ -403,15 +403,15 @@ void Print()
             snprintf(LCD_Row_1, 8, "<%s ", Cone_Info[Cone_Step].Cone_Print);
             lcd.print(LCD_Row_1);
             lcd.setCursor(13, 0);
-            lcd.print(" Kонус ");                                   
+            lcd.print(" Cone  ");                                   
             lcd.setCursor(8, 1);      
-            lcd.print(" Подача:");
+            lcd.print(" Feed:");
             snprintf(LCD_Row_2, 5, "%1d.%02d", Feed_mm/100, Feed_mm%100);
             lcd.print(LCD_Row_2);
             lcd.setCursor(8, 2);
-            lcd.print(" Циклов:  ");
+            lcd.print(" Cycles:   ");
             lcd.setCursor(8, 3); 
-            lcd.print(" Съём \6:");
+            lcd.print(" Depth \6:");
             snprintf(LCD_Row_4, 5, "%1d.%02d", Ap/100, Ap%100);
             lcd.print(LCD_Row_4); 
       
@@ -426,14 +426,14 @@ void Print()
              break;
         case Sub_Mode_Cone_Man:
              lcd.setCursor(0, 0);      
-             lcd.print(" Ручной ");
+             lcd.print(" Manual  ");
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_3, 3, "%2d", Pass_Total);
              lcd.print(LCD_Row_3);           
              break;
         case Sub_Mode_Cone_Ext:
              lcd.setCursor(0, 0);      
-             lcd.print(" Наружн ");
+             lcd.print(" External");
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_3, 3, "%2d", Pass_Total-Pass_Nr+1);
              lcd.print(LCD_Row_3);          
@@ -443,18 +443,18 @@ void Print()
            else if (SelectMenu == 2)
            {
             lcd.setCursor(0, 0);
-            lcd.print("Конус  < ");
+            lcd.print("Cone   < ");
             snprintf(LCD_Row_1, 5, "%s", Cone_Info[Cone_Step].Cone_Print);
             lcd.print(LCD_Row_1);
             lcd.setCursor(13, 0);
             lcd.print("    \1 \2");
             lcd.setCursor(0, 2);
-            lcd.print("Коническая        \3 ");
+            lcd.print("Conical           \3 ");
             if (ConL_Thr_flag == true){
             lcd.setCursor(0, 1);
-            lcd.print("  В режиме резьба   ");  
+            lcd.print("   Thread mode      ");  
             lcd.setCursor(0, 3);
-            lcd.print("резьба:    Вкл    \4 ");}
+            lcd.print("Thread: ON      \4 ");}
             else
             {             
              if ((Sub_Mode_Cone == Sub_Mode_Cone_Int) || ( Sub_Mode_Cone == Sub_Mode_Cone_Ext))
@@ -464,7 +464,7 @@ void Print()
                long long temp = (long long)Ap * Cs_Divisor + ((long long)Ap * Cm_Divisor + 5000LL) / 10000LL;
                long DlinaC = (long)((temp * Pass_Total + 1LL) / 2LL);  // +1 для округления   
                lcd.setCursor(0, 1);  
-               lcd.print("    Дл.вн.кон.");     
+               lcd.print("Int. cone length");     
                snprintf(LCD_Row_8, 5, "%3d.", DlinaC/100);
                lcd.print(LCD_Row_8);
                snprintf(LCD_Row_9, 3, "%02d",  DlinaC%100);
@@ -476,7 +476,7 @@ void Print()
                lcd.print("                    ");
               }    
             lcd.setCursor(0, 3);
-            lcd.print("резьба:    Выкл   \4 ");}
+            lcd.print("Thread: OFF     \4 ");}
            } 
       }
    
@@ -490,15 +490,15 @@ void Print()
             snprintf(LCD_Row_1, 8, ">%s ", Cone_Info[Cone_Step].Cone_Print);
             lcd.print(LCD_Row_1);
             lcd.setCursor(13, 0);
-            lcd.print(" Kонус ");                                   
+            lcd.print(" Cone  ");                                   
             lcd.setCursor(8, 1);      
-            lcd.print(" Подача:");
+            lcd.print(" Feed:");
             snprintf(LCD_Row_2, 5, "%1d.%02d", Feed_mm/100, Feed_mm%100);
             lcd.print(LCD_Row_2);
             lcd.setCursor(8, 2);
-            lcd.print(" Циклов:  ");
+            lcd.print(" Cycles:   ");
             lcd.setCursor(8, 3); 
-            lcd.print(" Съём \6:");
+            lcd.print(" Depth \6:");
             snprintf(LCD_Row_4, 5, "%1d.%02d", Ap/100, Ap%100);
             lcd.print(LCD_Row_4);  
             
@@ -506,14 +506,14 @@ void Print()
       {
         case Sub_Mode_Cone_Man:
              lcd.setCursor(0, 0);      
-             lcd.print(" Ручной ");
+             lcd.print(" Manual  ");
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_3, 3, "%2d", Pass_Total);
              lcd.print(LCD_Row_3);            
              break;
         case Sub_Mode_Cone_Ext:
              lcd.setCursor(0, 0);      
-             lcd.print(" Наружн ");
+             lcd.print(" External");
              lcd.setCursor(18, 2);
              snprintf(LCD_Row_3, 3, "%2d", Pass_Total-Pass_Nr+1);
              lcd.print(LCD_Row_3);        
@@ -525,7 +525,7 @@ void Print()
             lcd.setCursor(0, 0);
              lcd.print("                    ");
              lcd.setCursor(0, 1);     
-             lcd.print(" Режим невозможен!  ");
+             lcd.print("  Mode not available! ");
              lcd.setCursor(0, 2);
              lcd.print("                    ");
              lcd.setCursor(0, 3);
@@ -534,18 +534,18 @@ void Print()
            else if (SelectMenu == 2)
            {
             lcd.setCursor(0, 0);
-            lcd.print("Kонус  > ");
+            lcd.print("Cone   > ");
             snprintf(LCD_Row_1, 5, "%s", Cone_Info[Cone_Step].Cone_Print);
             lcd.print(LCD_Row_1);
             lcd.setCursor(13, 0);
             lcd.print("    \1 \2");
             lcd.setCursor(0, 2);
-            lcd.print("Коническая        \3 ");
+            lcd.print("Conical           \3 ");
             if (ConR_Thr_flag == true){
             lcd.setCursor(0, 1);
-            lcd.print("  В режиме резьба   "); 
+            lcd.print("   Thread mode      "); 
             lcd.setCursor(0, 3);
-            lcd.print("резьба:    Вкл    \4 ");}
+            lcd.print("Thread: ON      \4 ");}
             else
             {             
              if ((Sub_Mode_Cone == Sub_Mode_Cone_Int) || ( Sub_Mode_Cone == Sub_Mode_Cone_Ext))
@@ -555,7 +555,7 @@ void Print()
                long long temp = (long long)Ap * Cs_Divisor + ((long long)Ap * Cm_Divisor + 5000LL) / 10000LL;
                long DlinaC = (long)((temp * Pass_Total + 1LL) / 2LL);  // +1 для округления   
                lcd.setCursor(0, 1);  
-               lcd.print("    Дл.вн.кон.");     
+               lcd.print("Int. cone length");     
                snprintf(LCD_Row_8, 5, "%3d.", DlinaC/100);
                lcd.print(LCD_Row_8);
                snprintf(LCD_Row_9, 3, "%02d",  DlinaC%100);
@@ -567,7 +567,7 @@ void Print()
                lcd.print("                    ");
               }    
             lcd.setCursor(0, 3);
-            lcd.print("резьба:    Выкл   \4 ");}
+            lcd.print("Thread: OFF     \4 ");}
             
 
            }  
@@ -583,31 +583,31 @@ void Print()
         if (Raz == 1) // режим шара
         {  
          lcd.setCursor(0, 0);
-         lcd.print("ШAP \6");
+         lcd.print("BALL \6");
          snprintf(LCD_Row_1, 5, "%2ld.%01ld", Sph_R_mm * 2 / 100, Sph_R_mm * 2 / 10 %10);
          lcd.print(LCD_Row_1);
          lcd.print("мм");
          lcd.setCursor(8, 1);      
-         lcd.print(" Подача:");
+         lcd.print(" Feed:");
          snprintf(LCD_Row_2, 5, "%1d.%02d", Feed_mm/100, Feed_mm%100);
          lcd.print(LCD_Row_2);
          
           if (Sub_Mode_Sphere == Sub_Mode_Sphere_Man)
           {  
              lcd.setCursor(11, 0);
-             lcd.print(" Oтключен");
+             lcd.print(" Disabled");
           }
           else if (Sub_Mode_Sphere == Sub_Mode_Sphere_Ext)
           {  
              lcd.setCursor(11, 0);
-             lcd.print("  Включен");
+             lcd.print(" Enabled");
           }
           lcd.setCursor(8, 2);
-          lcd.print(" Ножка:\6"); 
+          lcd.print(" Nose: \6"); 
           snprintf(LCD_Row_3, 5, "%ld.%02ld", Bar_R_mm*2/100, Bar_R_mm*2%100);
           lcd.print(LCD_Row_3);
           lcd.setCursor(8, 3);
-          lcd.print(" Заходов:");
+          lcd.print(" Passes:");
           snprintf(LCD_Row_4, 4, "%3ld", Pass_Total_Sphr+2-Pass_Nr); 
           lcd.print(LCD_Row_4); 
         }  
@@ -615,31 +615,31 @@ void Print()
         else if (Raz == 2)
          {  
          lcd.setCursor(0, 0);
-         lcd.print("ОТРЕЗАНИЕ");
+         lcd.print("CUT-OFF");
          lcd.setCursor(9, 0);
          snprintf(LCD_Row_1, 5, "%3ld", Raz_R);
          lcd.print(LCD_Row_1);
          lcd.setCursor(8, 1);      
-         lcd.print(" Подача:");
+         lcd.print(" Feed:");
          snprintf(LCD_Row_2, 5, "%1d.%02d", Feed_mm/100, Feed_mm%100);
          lcd.print(LCD_Row_2);
          
           if (Sub_Mode_Sphere == Sub_Mode_Sphere_Man)
           {  
              lcd.setCursor(12, 0);
-             lcd.print(" мм\6 Руч");
+             lcd.print(" mm\6 Man");
           }
           else if (Sub_Mode_Sphere == Sub_Mode_Sphere_Ext)
           {  
              lcd.setCursor(12, 0);
-             lcd.print( " мм\6 Авт");
+             lcd.print( " mm\6 Auto");
           }
           lcd.setCursor(8, 2);
-          lcd.print(" Шаг  \6:"); 
+          lcd.print(" Step  \6:"); 
           snprintf(LCD_Row_3, 5, "%1d.%02d", Ap/100, Ap%100);
           lcd.print(LCD_Row_3);
           lcd.setCursor(8, 3);
-          lcd.print(" Смещен:");
+          lcd.print(" Offset:");
           snprintf(LCD_Row_4, 5, "%1d.%02d", Staggered_Width/100, Staggered_Width%100); 
           lcd.print(LCD_Row_4); 
         }   
@@ -649,12 +649,12 @@ void Print()
       else if (SelectMenu == 2)
       {  
          lcd.setCursor(0, 0);
-         lcd.print("Шиpина peзцa: ");
+         lcd.print("Cutter width: ");
          snprintf(LCD_Row_1, 5, "%1d.%02d", Cutter_Width/100, Cutter_Width%100);
          lcd.print(LCD_Row_1);
          lcd.print("мм");
          lcd.setCursor(0, 1);
-         lcd.print("Шaг по ocи Z: ");
+         lcd.print("Step along Z: ");
          snprintf(LCD_Row_2, 5, "%1d.%02d", Cutting_Width/100, Cutting_Width%100);
          lcd.print(LCD_Row_2);
          lcd.print("мм"); 
@@ -668,7 +668,7 @@ void Print()
              lcd.setCursor(0, 0);
              lcd.print("                    ");
              lcd.setCursor(0, 1);     
-             lcd.print(" Режим невозможен!  ");
+             lcd.print("  Mode not available! ");
              lcd.setCursor(0, 2);
              lcd.print("                    ");
              lcd.setCursor(0, 3);
@@ -681,7 +681,7 @@ void Print()
                        
 
                            lcd.setCursor(0, 0);
-                           lcd.print("    Текущий угол    ");
+                           lcd.print("   Current angle     ");
                            lcd.setCursor(0, 1);
                            lcd.print("       ");
                            snprintf(LCD_Row_2, 9, "%3ld.%01ld", Spindle_Angle/1000, Spindle_Angle%1000/100);
@@ -690,7 +690,7 @@ void Print()
                            lcd.setCursor(0, 2);   
                            lcd.print("                    "); 
                            lcd.setCursor(0, 3);
-                           lcd.print("Сброс кнопкой Селект");                        
+                           lcd.print("Reset with SELECT    ");                        
                   
                          
                           } 
@@ -704,7 +704,7 @@ void Print()
           lcd.setCursor(0, 0);
           lcd.print("                    ");
           lcd.setCursor(0, 1);
-          lcd.print("       РЕЗЕРВ       "); 
+          lcd.print("      RESERVED       "); 
           lcd.setCursor(0, 2);
           lcd.print("                    ");
           lcd.setCursor(0, 3);
