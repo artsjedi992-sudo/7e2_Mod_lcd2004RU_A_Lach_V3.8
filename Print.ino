@@ -76,7 +76,7 @@ void Print()
          (Mode == Mode_Thread  && SelectMenu == 3))
    {
          lcd.setCursor(0, 0);
-         lcd.print(" Enter workpiece dia.");
+         lcd.print(" Enter part diameter");
          lcd.setCursor(0, 1);
          lcd.print("                    ");
          lcd.setCursor(0, 2);
@@ -98,11 +98,11 @@ void Print()
          (Mode == Mode_Thread    && SelectMenu == 4))
         {
          lcd.setCursor(0, 0);
-          lcd.print("REMOTE LIMITS        ");
+          lcd.print(" REMOTE LIMITS      ");
           lcd.setCursor(0, 1);
           lcd.print("                    ");
           lcd.setCursor(0, 2); 
-          lcd.print("Distance             "); 
+          lcd.print("Distance            "); 
           lcd.setCursor(0, 3);
           lcd.print("to limit: ");
           snprintf(LCD_Row_8, sizeof(LCD_Row_8), "%3ld.%03d", (Distance_mm/2)/1000, (Distance_mm/2)%1000);  
@@ -690,7 +690,7 @@ void Print()
                            lcd.setCursor(0, 2);   
                            lcd.print("                    "); 
                            lcd.setCursor(0, 3);
-                           lcd.print("Reset with SELECT    ");                        
+                           lcd.print("Reset: press SELECT ");                        
                   
                          
                           } 
@@ -704,7 +704,7 @@ void Print()
           lcd.setCursor(0, 0);
           lcd.print("                    ");
           lcd.setCursor(0, 1);
-          lcd.print("      RESERVED       "); 
+          lcd.print("      RESERVED      "); 
           lcd.setCursor(0, 2);
           lcd.print("                    ");
           lcd.setCursor(0, 3);
