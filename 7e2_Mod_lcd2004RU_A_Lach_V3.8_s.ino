@@ -844,9 +844,9 @@ void setup()
   lcd.setCursor(0, 0);
   lcd.print("  www.chipmaker.ru  ");
   lcd.setCursor(0, 1);
-  lcd.print("  Control system     ");
+  lcd.print("  Control system    ");
   lcd.setCursor(0, 2);
-  lcd.print("    lathe machine    ");
+  lcd.print("  Lathe machine     ");
   lcd.setCursor(0, 3);
   lcd.print("        7e2 V3.8_s");
   
